@@ -4,8 +4,9 @@ from app import app
 #Views
 @app.route('/')
 def index():
+    title = 'Home - Welcome tothe best Movie Review webiste Online'
     message = 'Hello world!'
-    return render_template('index.html', message = message)
+    return render_template('index.html', title = title, message = message)
 
 @app.route('/movie/<int:movie_id>')
 def movie(movie_id):
