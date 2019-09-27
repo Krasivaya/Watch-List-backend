@@ -4,4 +4,5 @@ from app import app
 #Views
 @app.route('/')
 def index():
-    return render_template('index.html')
+    message = 'Hello world!'
+    return render_template('index.html', message = message)
