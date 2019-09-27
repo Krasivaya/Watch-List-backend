@@ -1,1 +1,14 @@
-<h1>Hello world! This is {{id}} </h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{title}} {{id}} </title>
+        {% else %}
+        <title>Movie</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>Hello world! This is {{id}} </h1>
+    </body>
+</html>
