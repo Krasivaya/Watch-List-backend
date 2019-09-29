@@ -6,7 +6,6 @@ Movie = movie.Movie
 
 #Getting api key
 api_key = app.config['MOVIE_API_KEY']
-api = api_key.get(MOVIE_API_KEY)
 #Getting movie url
 base_url = app.config['MOVIE_API_BASE_URL']
 
