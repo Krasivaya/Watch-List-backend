@@ -17,5 +17,19 @@
         <p> {{popular_movie.title}} </p>
         {% endfor %}
         
+
+        <!-- Upcoming Movie Section -->
+        <h3>Upcoming Movies</h3>
+        {% for upcoming_movies in upcoming %}
+        <p> {{upcoming_movies.title}} </p>
+        {% endfor %}
+        
+
+        <!-- Now Showing Movie Section -->
+        <h3>Now-Showing Movies</h3>
+        {% for now_showing_movies in now_showing %}
+        <p> {{now_showing_movies.title}} </p>
+        {% endfor %}
+        
     </body>
 </html>
