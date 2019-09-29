@@ -1,5 +1,5 @@
 {% macro displayMovieList(movie_list) %}
-    {% if movie in movie_list %}
+    {% for movie in movie_list %}
         <p> {{movie.title}} </p>
-    {% endif %}
+    {% endfor %}
 {% endmacro %}
