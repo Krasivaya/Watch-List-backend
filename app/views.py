@@ -13,7 +13,7 @@ def index():
     return render_template('index.html', title = title, message = message, popular = popular_movies, upcoming = upcoming_movies, now_showing = now_showing_movies)
 
 @app.route('/movie/<int:id>')
-def movie(movie_id):
+def movie(id):
     movie = get_movie(id)
     title = f'{movie.title}'
     return render_template('movie.html', title = title, movie = movie)
