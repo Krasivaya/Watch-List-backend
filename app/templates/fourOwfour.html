@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+<!-- Style block -->
+{% block styles %}
+    <link rel="icon" type="image/png" href=" {{url_for('static', filename = 'images/icon.png')}} ">
+{% endblock %}
+
 
 {% block content %}
     <div class="alert alert-dismissible alert-warning">
