@@ -1,0 +1,1 @@
+web: gunincorn manage:app
