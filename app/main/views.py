@@ -1,12 +1,11 @@
 from flask import render_template, request, redirect, url_for
-from app import app
-from .request import get_movies, get_movie, search_movie
-from .models import reviews
+from . import main
+from ..request import get_movies, get_movie, search_movie
+from ..models import Reviews
 from .forms import ReviewForm
-Review = reviews.Review
 
 #Home view
-@app.route('/')
+@main.route('/')
 def index():
     popular_movies = get_movies('popular')
     upcoming_movies = get_movies('upcoming')
@@ -21,7 +20,7 @@ def index():
         return render_template('index.html', title = title, message = message, popular = popular_movies, upcoming = upcoming_movies, now_showing = now_showing_movies)
 
 #Movie details view
-@app.route('/movie/<int:id>')
+@main.route('/movie/<int:id>')
 def movie(id):
     movie = get_movie(id)
     title = f'{movie.title}'
@@ -29,7 +28,7 @@ def movie(id):
     return render_template('movie.html', title = title, movie = movie, reviews = reviews)
 
 #Search view
-@app.route('/search/<movie_name>')
+@main.route('/search/<movie_name>')
 def search(movie_name):
     movie_name_list = movie_name.split(" ")
     movie_name_format = "+".join(movie_name_list)
@@ -38,7 +37,7 @@ def search(movie_name):
     return render_template('search.html', movies = searched_movies)
 
 #Review view
-@app.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
+@main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
 def new_review(id):
     form = ReviewForm()
     movie = get_movie(id)
