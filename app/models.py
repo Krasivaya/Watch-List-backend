@@ -18,8 +18,8 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
+    reviews = db.relationship('Reviews',backref = 'user',lazy = "dynamic")
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
-    reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
 
     @property
     def password(self):
@@ -47,7 +47,7 @@ class Role(db.Model):
         return f'User {self.name}'
 
 #Review model
-class Review(db.Model):
+class Reviews(db.Model):
 
     __tablename__ = 'reviews'
 
@@ -65,8 +65,11 @@ class Review(db.Model):
 
     @classmethod
     def get_reviews(cls,id):
-        reviews = Review.query.filter_by(movie_id=id).all()
+        reviews = Reviews.query.filter_by(movie_id=id).all()
         return reviews
+
+    def __repr__(self):
+        return f'User {self.movie_title}'
 
 #MOvie class
 class Movie:
