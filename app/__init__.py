@@ -2,17 +2,20 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from config import config_options
 
+def create_app(config_name):
 
-#Initializing application
-app = Flask(__name__, instance_relative_config = True)
+    #Initializing application
+    app = Flask(__name__)
 
-#Setup app configuration
-app.config.from_object(DevConfig)
-app.config.from_pyfile('config.py')
+    #Setup app configuration
+    app.config.from_object(DevConfig)
+    #Initializing Bootstrap
+    bootstrap = Bootstrap(app)
 
-#Initializing Bootstrap
-bootstrap = Bootstrap(app)
+    # Registering the blueprint
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
 
-from app import views
-from app import error
+    return app
+
 
