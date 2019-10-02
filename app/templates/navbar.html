@@ -13,6 +13,14 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li style="color:white;padding:15px;">{{current_user.username}}</li>
+                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                {% else %}
+                <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                {%endif%}
+              </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" name="movie_query" placeholder="Search for a Movie">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
